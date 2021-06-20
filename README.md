@@ -7,7 +7,8 @@ It's intended as a demonstration and template for anyone who would like to creat
 * Structure of a DearPyGUI program
 * Structure of nodes (widgets, input and output sockets)
 * Giving nodes a function
-* Update function (chain update) to update all follwing nodes if a new link was applied or a value was changed
+* Update function (chain update) to update all following nodes if a new link was applied or a value was changed
+    * maybe this function must be adjusted, depending on what data is processed !!!
 * Using callbacks
 * Using random IDs (together with ID checks) to create theoreticaly infinite windows, widgets and nodes without ID overlapping
 * Context menu (right mouse click modal popup) for adding nodes and/or other possible options
