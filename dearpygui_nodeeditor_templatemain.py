@@ -26,7 +26,7 @@ with window("MainWindow",
 
     set_theme("Cherry")
     set_main_window_size(1500, 900)
-    add_additional_font("./fonts/OpenSans-Regular.ttf", 20)
+    add_additional_font("dearpygui_nodeeditor_template/fonts/OpenSans-Regular.ttf", 20)
 
     with menu_bar("MainMenuBar"):
         with menu("Node editor"):
