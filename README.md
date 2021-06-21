@@ -23,11 +23,5 @@ It's intended as a demonstration and template for anyone who would like to creat
 - Download or clone repository
 - Execute via `poetry run python3 dearpygui_nodeeditor_template/main.py`
 
-## Help
-Any help in the form of comments, improvements or extensions are welcome.
-
-## Credits:
-Owner and developer: LuminousLizard
-
 ## License
 MIT-License
