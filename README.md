@@ -21,6 +21,7 @@ It's intended as a demonstration and template for anyone who would like to creat
 
 ## Usage
 - Download or clone repository
+- Inside the project folder run `poetry install` to create a virtualenv and install dependencies
 - Execute via `poetry run python3 dearpygui_nodeeditor_template/main.py`
 
 ## License
