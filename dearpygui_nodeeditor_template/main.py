@@ -3,7 +3,7 @@
 
 from dearpygui.core import *
 from dearpygui.simple import *
-from node_editor import callback_show_node_editor
+from src.node_editor import callback_show_node_editor
 
 
 def callback_close_program(sender, data):
