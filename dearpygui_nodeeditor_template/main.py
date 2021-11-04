@@ -25,12 +25,6 @@ with dpg.font_registry():
 with dpg.viewport_menu_bar():
     dpg.add_menu_item(label="Debugger", callback=callback_show_debugger)
     dpg.add_menu_item(label="Close", callback=callback_close_program)
-
-
-with dpg.window(label="MainWindow",
-                pos=[50, 50],
-                width=700,
-                height=200):
     dpg.bind_font(default_font)
 
     nodeEditor = NodeEditor()
