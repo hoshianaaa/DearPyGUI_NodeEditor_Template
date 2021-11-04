@@ -1,3 +1,6 @@
+# Copyright 2021 LuminousLizard
+# Licensed under the MIT-License
+
 import dearpygui.dearpygui as dpg
 import random
 from src.chain_update import func_chain_update
