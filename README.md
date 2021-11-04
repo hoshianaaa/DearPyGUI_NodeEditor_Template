@@ -6,18 +6,17 @@ It's intended as a demonstration and template for anyone who would like to creat
 
 * Structure of a DearPyGUI program
 * Structure of nodes (widgets, input and output sockets)
+* Adding nodes at the position of the last selected node
 * Giving nodes a function
 * Update function (chain update) to update all following nodes if a new link was applied or a value was changed
-    * maybe this function must be adjusted, depending on what data is processed !!!
 * Using callbacks
-* Using random IDs (together with ID checks) to create theoreticaly infinite windows, widgets and nodes without ID overlapping
-* Context menu (right mouse click modal popup) for adding nodes and/or other possible options
+* Using random IDs (together with ID checks) to create theoreticaly infinite widgets and nodes without ID overlapping
 * Menu bar for adding nodes and/or other possible options
 
 ## Requiremens
 * Python 3.9 (maybe other Python 3 versions also work)
-* Poetry >=1.0.0 (as package manager)
-    * DearPyGUI = ^0.6.415
+* Poetry >=1.1.11 (as package manager)
+    * DearPyGUI = 1.0.2
 
 ## Usage
 - Download or clone repository
