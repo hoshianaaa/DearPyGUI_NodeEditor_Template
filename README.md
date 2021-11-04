@@ -20,8 +20,8 @@ It's intended as a demonstration and template for anyone who would like to creat
 
 ## Usage
 - Download or clone repository
-- Inside the project folder run `poetry install` to create a virtualenv and install dependencies
-- Execute via `poetry run python3 dearpygui_nodeeditor_template/main.py`
+- Inside the folder with the main.py run `poetry install` to create a virtualenv and install dependencies (DearPyGUI)
+- Execute via `poetry run python3 main.py`
 
 ## License
 MIT-License
