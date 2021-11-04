@@ -1,3 +1,6 @@
+# Copyright 2021 LuminousLizard
+# Licensed under the MIT-License
+
 import dearpygui.dearpygui as dpg
 from random import randint
 
