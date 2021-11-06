@@ -19,12 +19,12 @@ class NodeEditor:
                         label="Node editor",
                         width=1000,
                         height=700,
-                        pos=[50, 100],
+                        pos=[50, 50],
                         menubar=True,
                         on_close=callback_close_window):
             # Add a menu bar to the window
             with dpg.menu_bar(label="MenuBar"):
-                with dpg.menu(label="Input nodes"):
+                with dpg.menu(label="Input/Output nodes"):
                     dpg.add_menu_item(tag="Menu_AddNode_InputFloat",
                                       label="Input float",
                                       callback=callback_add_node,
@@ -40,6 +40,10 @@ class NodeEditor:
                                       callback=callback_add_node,
                                       user_data="Addition")
 
+            with dpg.group(horizontal=True):
+                dpg.add_text("Status:")
+                dpg.add_text(tag="InfoBar")
+
             # Add node editor to the window
             with dpg.node_editor(tag="NodeEditor",
                                  # Function call for updating all nodes if a new link is created
@@ -53,13 +57,13 @@ class NodeEditor:
         # End note editor
 
 
+# Saving the position of the last selected node
 def save_last_node_position():
     global LastNodePosition
     if dpg.get_selected_nodes("NodeEditor") == []:
-        print("Old position: {}".format(LastNodePosition))
+        pass
     else:
         LastNodePosition = dpg.get_item_pos(dpg.get_selected_nodes("NodeEditor")[0])
-        print("Node position {} saved !".format(dpg.get_item_pos(dpg.get_selected_nodes("NodeEditor")[0])))
 
 
 def callback_add_node(sender, app_data, user_data):
