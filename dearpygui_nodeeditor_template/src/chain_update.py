@@ -11,8 +11,6 @@ LinkList = []
 # Function for updating all interconnected nodes if a link was created or a value has changed
 def func_chain_update(sender, data):
     # If a link has changed (tuple "data" has 2 values)
-    print("Data is: " + str(data))
-
     if type(data) == tuple:
         dpg.add_node_link(data[0], data[1], parent=sender)
         print("Following link was created or value changed:\nSender: " + str(sender) + "\nData: " + str(data))
@@ -33,35 +31,62 @@ def func_chain_update(sender, data):
     # until he reaches the chain end (nodes without further connections).
     print("following_nodes at chain calculation start: " + str(following_nodes))
     print("Link list: " + str(LinkList))
+
+    infinite_loop_check_list = []
+
     while following_nodes:
-        print("================ Loop pass started ================")
+        # Checking if following node was already processed in this update
+        # If yes, an infinite loop was created with the last connected link
+        if following_nodes[0][0] in infinite_loop_check_list:
+            dpg.set_value("InfoBar", "Exception: Infinite loop !")
+            # Searching the item ID of the connected link
+            # TODO: Better implementation without checking all items of the app but currently no
+            #  good function in Dearpygui is available
+            for item in dpg.get_all_items():
+                # Checking the item has the link attribute "attr_1"
+                if "attr_1" in dpg.get_item_configuration(item):
+                    if dpg.get_item_configuration(item)["attr_1"] == data[0] and dpg.get_item_configuration(item)["attr_2"] == data[1]:
+                        # Delete link to destroy infinite loop
+                        dpg.delete_item(item)
+                        raise Exception("Infinite loop ! Link deleted !")
+        # If no, the updated is performed
+        else:
+            # Add currently processed node to list for checking infinite loop
+            infinite_loop_check_list.append(following_nodes[0][0])
+            print("Infinite loop check list: " + str(infinite_loop_check_list))
 
-        # Link to node calculation
-        # TODO better implementation without hardcoding node funtion calls
-        node_calculation(following_nodes)
+            print("================ Loop pass started ================")
 
-        # Searching nodes, which are connected with the current node
-        # 1. Run through all links
-        for connections in LinkList:
-            # 2. Extract ID from the starting node of the selected link
-            connections_id = connections[0].split("!")
-            # 3. Compare with the target node of the current link
-            if following_nodes[0][0] == connections_id[0]:
-                print("Found further link ! " + str(connections))
-                # Move values to next node
-                # If float, round number
-                if isinstance(dpg.get_value(connections[0] + "_value"), float):
-                    dpg.set_value((connections[1] + "_value"), round(dpg.get_value(connections[0] + "_value"), 3))
-                else:  # All other types
-                    dpg.set_value((connections[1] + "_value"), dpg.get_value(connections[0] + "_value"))
-                # Add next node ID to list, which is interconnected inside the chain and must be updated
-                following_nodes.append(connections[1].split("!"))
-            else:
-                continue
-        # Remove ID of the node which was updated just now
-        following_nodes.pop(0)
-        print("Following nodes at loop end:" + str(following_nodes))
-        print("================ Loop pass completed ================")
+            # Link to node calculation
+            # TODO better implementation without hardcoding node funtion calls
+            node_calculation(following_nodes)
+
+            # Searching nodes, which are connected with the current node
+            # 1. Run through all links
+            for connections in LinkList:
+                # 2. Extract ID from the starting node of the selected link
+                connections_id = connections[0].split("!")
+                # 3. Compare with the target node of the current link
+                if following_nodes[0][0] == connections_id[0]:
+                    print("Found further link ! " + str(connections))
+                    # Move values to next node
+                    # If float, round number
+                    if isinstance(dpg.get_value(connections[0] + "_value"), float):
+                        dpg.set_value((connections[1] + "_value"), round(dpg.get_value(connections[0] + "_value"), 3))
+                    else:  # All other types
+                        dpg.set_value((connections[1] + "_value"), dpg.get_value(connections[0] + "_value"))
+                    # Add next node ID to list, which is interconnected inside the chain and must be updated
+                    following_nodes.append(connections[1].split("!"))
+                else:
+                    continue
+
+            # Remove ID of the node which was updated just now
+            following_nodes.pop(0)
+            print("Following nodes at loop end:" + str(following_nodes))
+            print("================ Loop pass completed ================")
+
+    del infinite_loop_check_list
+    del following_nodes
 
 
 def func_link_destroyed(sender, data):
