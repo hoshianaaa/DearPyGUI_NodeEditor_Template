@@ -1,13 +1,12 @@
 [tool.poetry]
-name = "dearpygui_nodeeditor_template"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+name = "DearPyGUI NodeEditor Template"
+version = "1.0.0"
+description = "A node editor template using DearPyGUI."
+authors = ["LuminousLizard"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 dearpygui = "1.0.2"
-dearpygui_ext = "0.9.3"
 [tool.poetry.dev-dependencies]
 
 [build-system]
