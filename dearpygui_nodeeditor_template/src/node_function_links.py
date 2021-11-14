@@ -1,5 +1,5 @@
 # Copyright 2021 LuminousLizard
-# Licensed under the EUPL-1.2
+# Licensed under the MIT-License
 
 from src.node_functions import *
 
