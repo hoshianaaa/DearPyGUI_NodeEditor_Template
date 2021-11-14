@@ -6,7 +6,7 @@ authors = ["LuminousLizard"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-dearpygui = "1.0.2"
+dearpygui = "1.1"
 [tool.poetry.dev-dependencies]
 
 [build-system]
