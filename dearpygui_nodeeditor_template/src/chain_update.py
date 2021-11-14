@@ -2,7 +2,7 @@
 # Licensed under the MIT-License
 
 import dearpygui.dearpygui as dpg
-from src.nodes.node_calculation import node_calculation
+from src.node_function_links import linking_node_function
 
 
 LinkList = []
@@ -10,6 +10,11 @@ LinkList = []
 
 # Function for updating all interconnected nodes if a link was created or a value has changed
 def func_chain_update(sender, data):
+    # sender = "NodeEditor" for links
+    # sender = attribute tag for changed values
+    # data = connected node attributes for links as list
+    # data = value for changed values
+
     # If a link has changed (tuple "data" has 2 values)
     if type(data) == tuple:
         dpg.add_node_link(data[0], data[1], parent=sender)
@@ -58,8 +63,8 @@ def func_chain_update(sender, data):
             print("================ Loop pass started ================")
 
             # Link to node calculation
-            # TODO better implementation without hardcoding node funtion calls
-            node_calculation(following_nodes)
+            # TODO better implementation without hardcoding node function calls
+            linking_node_function(following_nodes[0])
 
             # Searching nodes, which are connected with the current node
             # 1. Run through all links
