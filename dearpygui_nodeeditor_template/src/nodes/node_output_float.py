@@ -18,8 +18,8 @@ def add_node_output_float(user_data):
                   label="Result",
                   pos=user_data):
         with dpg.node_attribute(tag=str(random_id) + "!Node_Result_Input"):
-            dpg.add_group(tag=str(random_id) + "!TextGroup", width=100)
             dpg.add_input_text(tag=str(random_id) + "!Node_Result_Input_value",
+                               width=150,
                                default_value="None",
                                enabled=False,
                                label="Result")
