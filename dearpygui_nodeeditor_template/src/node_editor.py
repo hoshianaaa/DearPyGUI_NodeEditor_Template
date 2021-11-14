@@ -39,6 +39,18 @@ class NodeEditor:
                                       label="Addition",
                                       callback=callback_add_node,
                                       user_data="Addition")
+                    dpg.add_menu_item(tag="Menu_AddNode_Subtraction",
+                                      label="Subtraction",
+                                      callback=callback_add_node,
+                                      user_data="Subtraction")
+                    dpg.add_menu_item(tag="Menu_AddNode_Multiplication",
+                                      label="Multiplication",
+                                      callback=callback_add_node,
+                                      user_data="Multiplication")
+                    dpg.add_menu_item(tag="Menu_AddNode_Division",
+                                      label="Division",
+                                      callback=callback_add_node,
+                                      user_data="Division")
 
             with dpg.group(horizontal=True):
                 dpg.add_text("Status:")
@@ -67,9 +79,13 @@ def save_last_node_position():
 
 
 def callback_add_node(sender, app_data, user_data):
+    print(app_data)
     function_dict = {
-        "Addition": node_addition.add_node_addition,
         "Input_Float": node_input_float.add_node_input_float,
-        "Output_Float": node_output_float.add_node_output_float
+        "Output_Float": node_output_float.add_node_output_float,
+        "Addition": node_addition.add_node_addition,
+        "Subtraction": node_subtraction.add_node_subtraction,
+        "Multiplication": node_multiplication.add_node_multiplication,
+        "Division": node_division.add_node_division
     }
     function_dict[user_data](LastNodePosition)
