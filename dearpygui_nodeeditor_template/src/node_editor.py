@@ -83,7 +83,7 @@ def callback_add_node(sender, app_data, user_data):
     function_dict = {
         "Input_Float": node_input_float.add_node_input_float,
         "Output_Float": node_output_float.add_node_output_float,
-        "Addition": node_addition.add_node_addition,
+        "Addition": node_addition.AddNodeAddition,
         "Subtraction": node_subtraction.add_node_subtraction,
         "Multiplication": node_multiplication.add_node_multiplication,
         "Division": node_division.add_node_division
