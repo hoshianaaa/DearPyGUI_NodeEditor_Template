@@ -6,6 +6,7 @@ It's intended as a demonstration and template for anyone who would like to creat
 
 * Structure of a DearPyGUI program
 * Structure of nodes (widgets, input and output sockets)
+* Nodes with a variable number of input sockets
 * Adding nodes at the position of the last selected node
 * Giving nodes a function
 * Update function (chain update) to update all following nodes if a new link was applied or a value was changed
